@@ -28,32 +28,26 @@ $(function()
 
 function addTask(task)
 {
-  $('#tasklist').append('<li><div class="task">' + task + '<input type="checkbox" class="status"></input>' + '</div></li>');
+  $('#tasklist').append('<li><div class="task">' + task + '<input type="checkbox" class="status">' + '</input></div></li>');
   statusChanges();
 }
-
 
 function statusChanges()
 {
   $('.status').click(function(e)
   {
-    // TODO - Prevent default and manually set the check
     if($(this).attr('checked'))
       e.preventDefault();
-    else //if(!$(this).attr('checked'))
+    else
     {
       $(this).attr('checked', 'checked');
       $(this).parent().parent('li').addClass('done');
       $(this).parent().parent('li').prepend('<div class="done-text">DONE</div>');
+      // TODO - Add a smoother remove animation
       var target = this;
-      // TODO - Add a timeout for the actual removal so a css3 animation can be played
       setTimeout(function(){
-        console.log("deleting");
-        $(target).parent().parent('li').remove()
+        $(target).parent().parent('li').remove();
       }, 3200);
     }
   });
 }
-
-// TODO - Data storage
-// See http://developer.chrome.com/extensions/storage.html

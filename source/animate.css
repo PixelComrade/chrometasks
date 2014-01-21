@@ -1,0 +1,54 @@
+.done {
+	background-color: rgba(152, 245, 158, 0.4)!important;
+	border: 2px solid rgba(111, 222, 118, 0.4)!important;
+	-webkit-animation: complete 3s;
+}
+
+.done-text {
+	position: absolute;
+	margin: 0;
+	margin-left: 50%;
+	line-height: 1.5;
+	text-align: center;
+	color: #6FDE6C;
+	font-weight: 900;
+	text-shadow: 0 1px 2px rgba(49, 150, 47, 0.7);
+	-webkit-animation-name: complete-text;	
+	-webkit-animation-duration: 2s;
+	-webkit-animation-timing-function: ease-in-out;	
+}
+
+@-webkit-keyframes complete {
+	0%   {
+		background-color: rgba(152, 245, 158, 0.0)!important;
+		border: 2px solid rgba(111, 222, 118, 0.0)!important;
+	}
+	100% {
+		background-color: rgba(152, 245, 158, 0.4)!important
+		border: 2px solid rgba(111, 222, 118, 0.4)!important;
+	}
+}
+
+@-webkit-keyframes complete-text {
+	0% {
+		margin-left: -25%;
+	}
+	50%{
+		margin-left: 58%;
+	}
+	66%{
+		margin-left: 46%;
+	}
+	78%{
+		margin-left: 54%;
+	}
+	87%{
+		margin-left: 48%;
+	}
+	94%{
+		margin-left: 52%;
+	}
+	100% {
+		margin-left: 50%;
+	}
+}

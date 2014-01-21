@@ -32,3 +32,5 @@ body {
 	float: right;
 	margin: 6px 3px 3px 4px;
 }
+
+.btn-clear { width: 100%; text-align: center;}

@@ -3,7 +3,11 @@
 
   "name": "Daily Tasks",
   "description": "Daily Tasks allows you to keep a lightweight todo list right in the browser.",
-  "version": "0.1.5",
+  "version": "0.1.6",
+
+  "permissions": [
+  	"storage"
+  ],
   
   "browser_action": {
     "default_icon": "icon.png",

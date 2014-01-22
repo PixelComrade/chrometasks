@@ -33,4 +33,15 @@ body {
 	margin: 6px 3px 3px 4px;
 }
 
-.btn-clear { width: 100%; text-align: center;}
+.btn-clear { 
+	width: 100%; 
+	text-align: center; 
+	box-sizing: border-box; 
+	background-color: #FE3F44; 
+	border: 2px solid #A40004;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.btn-clear:hover { background-color: #FE7276;}
+.btn-clear:active { background-color: #FD0006;}
+.btn-clear a { color: #fff; font-weight: 700;}

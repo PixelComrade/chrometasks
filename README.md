@@ -1,7 +1,7 @@
 Chrome Tasks (Working Title)
 ============================
 
-### Current version: 0.1.6 Alpha
+### Current version: 0.1.8 Alpha
 
 A Google Chrome extension that allows the user to create and manage a personal to-do list in a bloat-free application.
 

@@ -1,6 +1,6 @@
 // Utility functions that control the storage of information in and out of the application
 
-var logging = true;
+var logging = false;
 
 function Tracker()
 {
@@ -49,6 +49,7 @@ Tracker.prototype.displayData = function()
 // Add a task to the task array
 Tracker.prototype.addTask = function(task)
 {
+  log("Adding task: " + task);
   $('#tasklist').append(
     '<li class="' + task + '"><div class="task">' + task + '<input type="checkbox" class="status">' + '</input></div></li>'
   );
@@ -59,7 +60,7 @@ Tracker.prototype.addTask = function(task)
   this.allTasks.push(task);
 
   this.syncStorage();
-  log("Adding task: " + task);
+  log("Added task: " + task);
 }
 
 // Remove a task from the task array and from the DOM
@@ -67,27 +68,14 @@ Tracker.prototype.removeTask = function(task)
 {
 	// TODO - There has to be a more efficient way to remove an element from a dynamic array
   // If this function is called, that means there are tasks in the list
-  log("Task list before remove: " + this.allTasks);
-
   var result = this.allTasks;
   this.allTasks = [];
-  log("Task list before remove: " + this.allTasks);
 
   var index = result.indexOf(task);
   if(index != -1)
     result.splice(index, 1);
   this.allTasks = result;
-/*
-  for(var i = 0; i < this.allTasks.length; i++)
-  {
-    if(this.allTasks[i] != task)
-      result.push(this.allTasks[i]);
-  }
-  this.allTasks = result;
-*/
-  log("Task list after remove: " + this.allTasks);
-  //$('li.' + task).remove();
-  log('About to remove ' + task + ' from list');
+
   this.syncStorage();
   log('Removed ' + task + ' from list');
 }
@@ -123,19 +111,8 @@ Tracker.prototype.syncArray = function()
   var values = getItem('tasks');
   if(!isBlank(values))
   {
-    if(values.indexOf('---,---') == -1)
-    {
-      log("Getting only one value");
-      values = values.replace("---","");
-      this.allTasks = new Array();
-      this.allTasks.push(values);
-    }
-    else
-    {
-      log("Getting multiple values");
-      this.allTasks = values.split("---,---");
-      this.allTasks = resetArray(this.allTasks);
-    }
+    values = values.slice(0, (values.length - 3));
+    this.allTasks = values.split("---,");
   }
   log("Arrayed values: " + this.allTasks);
   log("Length of arrayed values: " + this.allTasks.length);
@@ -195,8 +172,9 @@ function prepArray(list)
 {
   for(var i = 0; i < list.length; i++)
   {
+    log("Checking " + list[i]);
     if(list[i].indexOf('---') == -1)
-      list[i] = "---" + list[i] + "---";
+      list[i] = list[i] + "---";
   }
   return list;
 }
@@ -205,6 +183,7 @@ function resetArray(list)
 {
   for(var i = 0; i < list.length; i++)
   {
+    log("Reseting " + list[i]);
     list[i] = list[i].replace("---","");
   }
   return list;
